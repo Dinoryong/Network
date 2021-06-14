@@ -5,5 +5,9 @@
 ## Network Terms <a id="undefined"></a>
 
 * [initial page](undefined/initial-page.md)
-* [1장. 네트워크 개론편](undefined/1-..md)
+* [chp.01.Network Introduction](undefined/1-..md)
+
+## HTTP basics
+
+* [web brower request](http-basics/web-brower-request.md)
 
