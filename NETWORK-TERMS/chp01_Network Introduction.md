@@ -1,6 +1,6 @@
-# chp.01.Network Introduction
+# chp_01 Network Introduction
 
-> \[toc\]
+> [toc]
 
 
 
