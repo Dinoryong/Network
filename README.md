@@ -44,3 +44,12 @@
 
 
 <br/>
+
+### [HTTP : The Definitive Guide]()
+
+- 교재 정리 : [HTTP 완벽 가이드](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788966261208)
+
+- Flash Card : 교재 정리본을 flash card 형태로 정리, 틈틈이 시험 볼 수 있는 형태로 만들기
+  - [Google Sheet](https://docs.google.com/spreadsheets/d/16sB1tNt-IFqbreJ4ytutIIF-dTqlVelDk49IYn8WWxw/edit?usp=sharing)
+  - Anki (flash card)
+- docs branch로 PR 을 보내면 정리 후, main branch 로 push
