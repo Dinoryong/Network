@@ -84,3 +84,29 @@ references
 
   [Goodgid blog](https://goodgid.github.io/category/#Network)
 
+  [tech interview for developer](https://github.com/CS-box/tech-interview-for-developer/tree/master/Computer%20Science/Network)
+
+  [Interview Question for Beginner](https://github.com/CS-box/Interview_Question_for_Beginner/tree/master/Network)
+
+  [tech-interview](https://github.com/CS-box/tech-interview#2-network)
+
+  [Ready For Tech Interview](https://github.com/CS-box/Ready-For-Tech-Interview/tree/master/Network)
+
+  [Must Know About Frontend](https://github.com/CS-box/Must-Know-About-Frontend#chart_with_upwards_trend-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
+
+  [tech interview study](https://github.com/CS-box/tech-interview-study#2-network)
+
+- Sites
+
+  [geek for geeks computer networks mock tests](https://www.geeksforgeeks.org/quiz-corner-gq/#Computer%20Networks%20Mock%20Tests)
+
+  [geek for geeks commonly asked computer networks interview questions](https://www.geeksforgeeks.org/commonly-asked-computer-networks-interview-questions-set-1/)
+
+  [InterviewBit Networking Interview Questions](https://www.interviewbit.com/networking-interview-questions/)
+
+- Youtube
+
+  [쿨라임의 HTTP/1.1,HTTP/2, 그리고 QUIC](https://youtu.be/xcrjamphIp4)
+
+  [르윈의 TCP UDP](https://youtu.be/ikDVGYp5dhg)
+
