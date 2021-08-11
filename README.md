@@ -64,3 +64,28 @@
   - [Google Sheet](https://docs.google.com/spreadsheets/d/16sB1tNt-IFqbreJ4ytutIIF-dTqlVelDk49IYn8WWxw/edit?usp=sharing)
   - Anki (flash card)
 - docs branch로 PR 을 보내면 정리 후, main branch 로 push
+
+<br/>
+
+references
+
+- interview questions
+
+  [프론트엔드 면접 질문 리스트 - FE (Browser)](https://joontae-kim.github.io/2020/10/26/interview-question-fe/)
+
+  [면접 준비](https://trello.com/b/KXxQo8Lw/%EB%A9%B4%EC%A0%91%EC%A4%80%EB%B9%84)
+
+  [My Google Spread Sheet]()
+
+  [Anki]()
+
+- Udemy course
+
+  [Introduction to Computer Networks for Non-Techies](https://www.udemy.com/course/introduction-to-computer-networks/learn/lecture/13564126?start=15#overview)
+
+  [IT Networking Fundamentals For Complete Beginners](https://www.udemy.com/course/it-networking-fundamentals/learn/lecture/7307262?start=15#overview)
+
+- Coursera
+
+  [Operating Systems and You:Becoming a Power User](https://www.coursera.org/learn/os-power-user)
+
