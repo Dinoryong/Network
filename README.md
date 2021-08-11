@@ -4,20 +4,20 @@
 
 > [toc]
 
-
+<br/>
 
 ## How to
 
-1. 블로그, repo 요약본 먼저 읽으며 흐름을 파악하고 궁금한 사항들을 간단히 상기시킨다
-2. 교재를 읽으며 chapter 마다 , topic 마다 , 표시해둔다
+1. blog, github repo 먼저 읽으며 흐름을 파악하고 궁금한 사항들을 간단히 상기시킨다
+2. textbook을 읽으며 chapter 마다 , topic 마다 , 표시해둔다
 3. MD file 로 chapter, topic 별로 정리한다.
-4. 동시에 flash card로 변환하기 위해 Google Sheet에 category, topic별로 정리
+4. 동시에 flash card (Anki format)로 변환하기 위해 Google Sheet에 category, topic별로 정리
 5. 강의를 들으며 전체 흐름을 다시 빠르게 상기시키며 궁금한 점을 적어두고 해결해나간다
 6. 해결한 궁금점을 google sheet 에 추가해나가면서 매일 flash card를 반복한다
 
+<br/>
 
-
-## references
+## Textbook
 
 ### [NETWORK-TERMS](https://github.com/Dinoryong/Network/tree/main/NETWORK-TERMS)
 
@@ -25,9 +25,6 @@
 - Flash Card : 교재 정리본을 flash card 형태로 정리, 틈틈이 시험 볼 수 있는 형태로 만들기
   - [Google Sheet](https://docs.google.com/spreadsheets/d/16sB1tNt-IFqbreJ4ytutIIF-dTqlVelDk49IYn8WWxw/edit?usp=sharing)
   - Anki (flash card)
-- docs branch로 PR 을 보내면 정리 후, main branch 로 push
-
-
 
 <br/>
 
@@ -37,9 +34,6 @@
 - Flash Card : 교재 정리본을 flash card 형태로 정리, 틈틈이 시험 볼 수 있는 형태로 만들기
   - [Google Sheet](https://docs.google.com/spreadsheets/d/16sB1tNt-IFqbreJ4ytutIIF-dTqlVelDk49IYn8WWxw/edit?usp=sharing)
   - Anki (flash card)
-- docs branch로 PR 을 보내면 정리 후, main branch 로 push
-
-
 
 <br/>
 
@@ -50,9 +44,6 @@
 - Flash Card : 교재 정리본을 flash card 형태로 정리, 틈틈이 시험 볼 수 있는 형태로 만들기
   - [Google Sheet](https://docs.google.com/spreadsheets/d/16sB1tNt-IFqbreJ4ytutIIF-dTqlVelDk49IYn8WWxw/edit?usp=sharing)
   - Anki (flash card)
-- docs branch로 PR 을 보내면 정리 후, main branch 로 push
-
-
 
 <br/>
 
@@ -88,4 +79,8 @@ references
 - Coursera
 
   [Operating Systems and You:Becoming a Power User](https://www.coursera.org/learn/os-power-user)
+
+- Blog & Github
+
+  [Goodgid blog](https://goodgid.github.io/category/#Network)
 
