@@ -98,11 +98,15 @@ references
 
 - Sites
 
+  [tcp scool](http://tcpschool.com/webbasic/intro)
+
   [geek for geeks computer networks mock tests](https://www.geeksforgeeks.org/quiz-corner-gq/#Computer%20Networks%20Mock%20Tests)
 
   [geek for geeks commonly asked computer networks interview questions](https://www.geeksforgeeks.org/commonly-asked-computer-networks-interview-questions-set-1/)
 
   [InterviewBit Networking Interview Questions](https://www.interviewbit.com/networking-interview-questions/)
+
+  [REST란 ? RES API 란? RESTful  이란?](https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html)
 
 - Youtube
 
