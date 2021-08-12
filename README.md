@@ -106,11 +106,72 @@ references
 
   [InterviewBit Networking Interview Questions](https://www.interviewbit.com/networking-interview-questions/)
 
-  [REST란 ? RES API 란? RESTful  이란?](https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html)
-
 - Youtube
 
-  [쿨라임의 HTTP/1.1,HTTP/2, 그리고 QUIC](https://youtu.be/xcrjamphIp4)
+  [우아한 테크코스 - 10분 테코톡](https://youtube.com/playlist?list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH)
 
-  [르윈의 TCP UDP](https://youtu.be/ikDVGYp5dhg)
+  [Crash Course](https://youtu.be/3QhU9jd03a0)
+  
+  
+
+<br/>
+
+## Index
+
+- HTTP 의 Method : GET vs POST
+- TCP vs UDP
+- TCP 3-way-handshake
+- HTTP & HTTPS
+- DNS Round Robin
+- 흐름제어 & 혼잡제어 & 오류제어
+- 웹 통신의 큰 흐름 (type-url-process) , HTTP를 사용한 통신 과정
+- OSI 7 계층
+- Blocking Non-Blocking IO
+- 대칭키 & 공개키
+- 로드 밸런싱 (Load Balancing)
+- HTTP 1.1 ~ 2.0
+- cdn
+- Cookie-session
+- REST-api
+- URI
+- CORS
+- HTTP Keep Alive
+- OSI 참조 모델과 TCP/IP 기초
+  - IP 주소
+  - IP
+  - 노드
+  - OSI 참조 모델
+  - 패킷
+  - 서브넷 마스크
+  - TCP / IP
+- HTTP vs Socket
+- 로컬영역 네트워크편
+  - Ethernet
+  - Token Ring
+  - 무선 LAN
+- 와이드 영역 네트워크
+  - VPN
+- 하드웨어
+  - 브리지
+  - 게이트웨이
+  - 리피터
+  - 라우터
+- 서비스 프로토콜
+  - DHCP
+  - DNS
+  - NAT
+  - 프록시 서버
+- 인터넷편
+  - ISP
+  - Java
+  - RSS
+  - SOAP
+  - URL
+- 네트워크 주소에 대한 모든 것
+- 다양한 Timeouet을 알아보자 
+  - Connection Timeout
+  - Socket Timeout
+  - Read Timeout
+- 포워드 Forward 프록시와 리버스 Reverse 프록시
+- 네이버 메인 페이지의 트래픽 처리
 

@@ -8,7 +8,7 @@
 
 <br/>
 
-## 1. HTTP 정의
+## 1. HTTP 의미
 
 > 영어 약자, 규약
 
@@ -85,7 +85,7 @@
 
 
 
-HTTP/1.1
+## HTTP/1.1
 
 커넥션 하나당 요청 하나랑 응답 하나만 처리
 
@@ -103,7 +103,7 @@ PErsistent Connection - 지정한 timeout 동안 커넥션을 닫지 않는 방�
 
 
 
-HTTP/2
+## HTTP/2
 
 기존 HTTP/1.x 버전의 성느 향상에 초점을 ㅁ자춘 프로토콜, 표준의 대체가 아닌 확장
 
@@ -117,9 +117,9 @@ SErver push - 클라이언트가 요청하지도 않은 리소스를 서버가 �
 
 Header Compression - 헤더의 크기를 줄여 페이지 로드 시간 감소
 
+<br/>
 
-
-QUIC
+## QUIC
 
 전송 계층 프로토콜
 
@@ -131,3 +131,18 @@ udp header
 
 데이터 전송에 집중한 설계 , 별도의 기능이 없기 대문에 원하는 기능 구현 가능 , tcp의 지연을 줄이면서 tcp의신뢰성 확보 가능
 
+
+
+#### Ref
+
+- Youtube
+
+  [쿨라임의 HTTP/1.1,HTTP/2, 그리고 QUIC](https://youtu.be/xcrjamphIp4)
+
+  [르윈의 TCP UDP](https://youtu.be/ikDVGYp5dhg)
+
+- Blog
+
+  [REST란 ? RES API 란? RESTful  이란?](https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html)
+
+  
