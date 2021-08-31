@@ -66,9 +66,7 @@ references
 
   [면접 준비](https://trello.com/b/KXxQo8Lw/%EB%A9%B4%EC%A0%91%EC%A4%80%EB%B9%84)
 
-  [My Google Spread Sheet]()
-
-  [Anki]()
+  [networking-interview-questions](https://www.guru99.com/networking-interview-questions.html)
 
 - Udemy course
 
