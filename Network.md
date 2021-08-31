@@ -13,20 +13,21 @@
 ## Index
 
 - HTTP 의 Method : GET vs POST
+- HTTP & HTTPS
+- HTTP 1.1 ~ 2.0
+- 대칭키 & 공개키
+- Cookie-session
+- REST-api
 - TCP vs UDP
 - TCP 3-way-handshake
-- HTTP & HTTPS
 - DNS Round Robin
 - 흐름제어 & 혼잡제어 & 오류제어
 - 웹 통신의 큰 흐름 (type-url-process) , HTTP를 사용한 통신 과정
 - OSI 7 계층
 - Blocking Non-Blocking IO
-- 대칭키 & 공개키
 - 로드 밸런싱 (Load Balancing)
-- HTTP 1.1 ~ 2.0
 - cdn
-- Cookie-session
-- REST-api
+- 
 - URI
 - CORS
 - HTTP Keep Alive
@@ -472,83 +473,171 @@ HTTP 요청 데이터는 헤더와 본문으로 구성되는데 이를 각각 �
 - [MDN, HTTP/1.x의 커넥션 관리](https://developer.mozilla.org/ko/docs/Web/HTTP/Connection_management_in_HTTP_1.x)
 - [Google, HTTP/2 소개](https://developers.google.com/web/fundamentals/performance/http2)
 
+
+
+
+
+
+
+## HTTP/2
+
+- HTTP/2는 [HTTP/1.1](https://goodgid.github.io/HTTP-1.1/)에서 설명한것 처럼 [SPDY](https://goodgid.github.io/HTTP-1.1/#http11-단점-극복-결과)를 기반으로 2012년 10월 부터 시작한 새로운 프로토콜 구현 프로젝트 이다.
+- http2 공식 github 페이지의 서문을 보면 http2의 목적을 명확히 알 수 있다.
+
+```
+HTTP/2 is a replacement for how HTTP is expressed “on the wire.” 
+It is not a ground-up rewrite of the protocol
+
+HTTP methods, status codes and semantics are the same, and it should be possible to use the same APIs as HTTP/1.x (possibly with some small additions) to represent the protocol. 
+
+The focus of the protocol is on performance; specifically, end-user perceived latency, network and server resource usage. 
+
+One major goal is to allow the use of a single connection from browsers to a Web site."
+```
+
+[번역](https://translate.google.co.kr/?#en/ko/HTTP%2F2 is a replacement for how HTTP is expressed “on the wire.”  It is not a ground-up rewrite of the protocol HTTP methods%2C status codes and semantics are the same%2C and it should be possible to use the same APIs as HTTP%2F1.x (possibly with some small additions) to represent the protocol.  The focus of the protocol is on performance%3B specifically%2C end-user perceived latency%2C network and server resource usage.  One major goal is to allow the use of a single connection from browsers to a Web site.")
+
+- 즉 완전히 새로운 프로토콜을 만들었기 보단 성능 향상에 초점을 맞춘 프로토콜이다.
+
+------
+
+## HTTP/2의 성능 향상을 위한 요소
+
+### Multiplexed Streams
+
+- 한 커넥션으로 **동시에 여러개의 메세지**를 주고 받을 있으며 응답은 **순서**에 상관없이 stream으로 주고 받는다.
+- HTTP/1.1의 **Connection [Keep-Alive](https://goodgid.github.io/HTTP-Keep-Alivemd)**, **Pipelining**의 개선이라 보면 된다.
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_2.png)
+
+------
+
+### Stream Prioritization
+
+- 예를 들면 클라이언트가 요청한 HTML문서안에 CSS파일 1개와 Image파일 2개가 존재할 때
+- 이를 클라이언트가 각각 요청하고 난 후 Image파일보다 CSS파일의 수신이 늦어지는 경우
+  브라우저의 렌더링이 늦어지는 문제가 발생하는데
+  HTTP/2의 경우 **리소스간 의존관계(우선순위)**를 설정하여 이런 문제를 해결하고 있다.
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_3.png)
+
+------
+
+### Server Push
+
+- 서버는 클라이언트의 요청에 대해 요청하지도 않은 리소스를 마음대로 보내줄 수 도 있다.
+- What? 클라이언트(브라우저)가 HTML문서를 요청했고
+  해당 HTML에 여러개의 리소스(CSS, Image…) 가 포함되어 있는 경우
+- HTTP/1.1에서 클라이언트는 요청한 HTML문서를 수신한 후
+  HTML문서를 해석하면서 필요한 리소스를 재 요청하는 반면
+- HTTP/2에선 Server Push 기법을 통해서
+  클라이언트가 요청하지도 않은 (HTML문서에 포함된 리소스) 리소스를 Push 해주는 방법으로
+  **클라이언트의 요청**을 **최소화**해서 **성능 향상**을 이끌어 낸다.
+- 이를 **PUSH_PROMISE**라고 부르며
+  PUSH_PROMISE를 통해서 서버가 전송한 리소스에 대해선 클라이언트는 요청을 하지 않는다.
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_4.png)
+
+------
+
+### Header Compression
+
+- HTTP/2는 Header 정보를 압축하기 위해 **Header Table**과 **Huffman Encoding**기법을 사용하여 처리하는데
+- 이를 **HPACK 압축 방식**이라 부르며 별도의 [명세서(RFC 7531)](https://http2.github.io/http2-spec/compression.html)로 관리하고 있다.
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_5.png)
+
+- 위 그림처럼 클라이언트가 두번의 요청을 보낸다고 가정하면
+  HTTP/1.x의 경우 두개의 요청 Header에 중복값이 존재해도 그냥 중복 전송한다.
+- 하지만 HTTP/2에선 Header에 중복값이 존재하는 경우
+  **Static/Dynamic Header Table 개념**을 사용하여
+  **중복 Header를 검출**하고
+  중복된 Header는 index값만 전송하고
+  중복되지 않은 Header정보의 값은 Huffman Encoding 기법으로 인코딩처리 하여 전송한다.
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_6.png)
+
+------
+
+## HTTP/1.1 과 HTTP/2 성능비교
+
+- 두 프로토콜의 객관적인 성능비교 지표는
+  테스트 환경과 각각 테스트시 외부 인터넷 품질등의 영향으로 정확하게 알 수는 없지만,
+- 일반적으로 HTTP/2를 사용할 경우 웹 응답 속도가 HTTP/1.1에 비해 15~50%가 향상 된다고 한다.
+- [성능 테스트 사이트](https://www.httpvshttps.com/)에서 동일 개수/용량의 png이미지를 웹사이트에 로딩시켜 HTTP/1.1 과 HTTP/2의 속도를 비교한 결과이다.
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_7.png)
+
+![img](https://goodgid.github.io/assets/img/network/http_2_0_8.png)
+
+- HTTP/1.1은 HTTP/2에 비해 *594%* 나 느림을 알 수 있다.
+- 이미지에 HTTPS라고 적혀있지만 실제로는 HTTP/2를 뜻한다.
+
+------
+
+## Reference
+
+- [HTTP 동작 과정](http://jess-m.tistory.com/17)
+- [나만 모르고 있던 - HTTP/2](https://www.popit.kr/나만-모르고-있던-http2/)
+
 <br/>
 
 
 
-
-
-
-
-<br/>
-
-## TCP 3-way-handshake, 4-way-handshake
+## HTTP vs Socket
 
 > fsdf
 
+# HTTP 통신 vs Socket 통신
+
+- 통신을 하는데 있어서 다음과 같이 크게 두 가지로 나눌 수 있다.
+
+1. HTTP 통신
+2. Socekt 통신
+
+- HTTP와 Socket의 가장 큰 차이점은 **접속(Connection)**을 유지하는지의 여부이다.
+
+------
+
+## HTTP 통신
+
+HTTP 통신은 웹브라우저에 정보를 표시하는 것과 같이 클라이언트의 요청이 있을 때
+
+서버가 해당 페이지에 대한 자료를 전송하고 곧바로 연결을 끊는 방식이다.
+
+현재 이 글을 보고 있는 상황에 맨 처음 이 페이지를 로드 시에만 서버와 연결이 되고
+
+현재는 서버와 접속이 끊어진 상태이다.
+
+이 상태에서 F5 키를 눌러 새로고침을 하거나 다른 페이지로 이동하면 그때 다시 서버와 연결을 한다.
 
 
 
+이렇게 하는 이유는 단 한가지. 서버의 부하를 줄여서 다른 접속을 원활하게 처리하기 위해서이다.
 
-<br/>
+만약 F5 키에 연필을 꽂아서 클라이언트가 서버를 계속해서 물고 늘어지면
 
-## TCP vs UDP
+서버는 이 클라이언트의 연결을 유지하느라 다른 컴퓨터의 응답이 늦어질 것이다.
 
-> fsdf
+이런 방식으로 여러 대의 PC가 서버를 붙잡고 늘어져서 서버가 다른 일을 하지 못하도록 하는 것을 **DDOS** 공격이라한다.
 
+------
 
+## Socket 통신
 
+Socket 통신은 클라이언트가 서버와 접속이 되면 서버나 클라이언트에서 강제로 접속을 해제할 때까지는 계속해서 접속이 유지된다.
 
+따라서 서버의 능력이 무한대가 아닌 이상 동시에 접속할 수 있는 클라이언트의 수가 제한이 될 수 밖에 없다.
 
+Socket 통신은 실시간으로 정보 교환이 필요하는 채팅이나 온라인 게임, 실시간 동영상 강좌 등에 사용된다.
 
+따라서 이와 같은 경우가 아니라면 서버와의 통신은 HTTP를 사용하는 것이 시스템의 자원을 보다 효과적으로 사용할 수 있다.
 
-<br/>
+------
 
+Back : [[로컬 영역 네트워크편\] Ethernet](https://goodgid.github.io/NW-Ethernet/)
 
-
-## DNS Round Robin 방식
-
-> ㄹㄴㅇㄹ
-
-
-
-
-
-<br/>
-
-## 웹 통신의 큰 흐름
-
-> ㄹㄴㅇㄹㅇㄹ
-
-
-
-<br/>
-
-## 흐름 제어 & 혼잡 제어 & 오류제어
-
-> ㄹㄴㅇㄹ
-
-
-
-<br/>
-
-## OSI 7 계층
-
-> ㄹㄴㅇㄹ
-
-
-
-
-
-<br/>
-
-## Blocking Non-Blocking IO
-
-> fsdf
-
-
-
-
+Next : [[로컬 영역 네트워크편\] Token Ring](https://goodgid.github.io/NW-Toekn-Ring/)
 
 
 
@@ -612,25 +701,7 @@ but, 대칭키 전달과정에서 해킹 위험에 노출
 
 <br/>
 
-## 로드 밸런싱 Load Balancing
 
-> fsdf
-
-
-
-
-
-<br/>
-
-
-
-## CDN
-
-> fsdf
-
-
-
-<br/>
 
 ## Cookie - Session
 
@@ -689,6 +760,24 @@ HTTP는 상태가 없는(Stateless) 프로토콜이기 때문에 사용자가 �
 
 
 <br/>
+
+
+
+## HTTP Keep Alive
+
+> fsdff
+
+
+
+
+
+<br/>
+
+## 
+
+
+
+
 
 ## rest - api
 
@@ -825,6 +914,106 @@ DELETE /students/1
 
 <br/>
 
+
+
+<br/>
+
+## TCP 3-way-handshake, 4-way-handshake
+
+> fsdf
+
+
+
+
+
+<br/>
+
+## TCP vs UDP
+
+> fsdf
+
+
+
+
+
+
+
+<br/>
+
+
+
+## DNS Round Robin 방식
+
+> ㄹㄴㅇㄹ
+
+
+
+
+
+<br/>
+
+## 웹 통신의 큰 흐름
+
+> ㄹㄴㅇㄹㅇㄹ
+
+
+
+<br/>
+
+## 흐름 제어 & 혼잡 제어 & 오류제어
+
+> ㄹㄴㅇㄹ
+
+
+
+<br/>
+
+## OSI 7 계층
+
+> ㄹㄴㅇㄹ
+
+
+
+
+
+<br/>
+
+## Blocking Non-Blocking IO
+
+> fsdf
+
+
+
+
+
+
+
+
+
+<br/>
+
+## 로드 밸런싱 Load Balancing
+
+> fsdf
+
+
+
+
+
+<br/>
+
+
+
+## CDN
+
+> fsdf
+
+
+
+<br/>
+
+
+
 ## type - url - process
 
 > fsf
@@ -861,16 +1050,6 @@ DELETE /students/1
 
 <br/>
 
-## HTTP Keep Alive
-
-> fsdff
-
-
-
-
-
-<br/>
-
 ## OSI 참조 모델과 TCP/IP 기초 - IP 구조, IP, 노드, OSI 참조 모델, 패킷, 서브넷 마스크, TCP/IP
 
 > fdsf
@@ -879,17 +1058,7 @@ DELETE /students/1
 
 <br/>
 
-## HTTP vs Socket
 
-> fsdf
-
-
-
-
-
-
-
-<br/>
 
 ## 로컬 영역 네트워크편 - Ethernet, Token Ring, 무선 LAN
 
